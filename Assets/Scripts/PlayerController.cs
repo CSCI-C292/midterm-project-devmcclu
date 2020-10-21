@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _moveSpeed = 3f;
     [SerializeField] Camera _cam;
     CharacterController _characterController;
+    GunController _gunController;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        _gunController = GetComponentInChildren<GunController>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,11 @@ public class PlayerController : MonoBehaviour
     {
         Aim();
         Movement();
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            _gunController.Shoot();
+        }
     }
 
     void Aim()

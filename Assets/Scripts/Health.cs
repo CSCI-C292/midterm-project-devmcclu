@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] int health = 100;
-    [SerializeField] int armor = 0;
+    [SerializeField] int _health = 100;
+    [SerializeField] int _armor = 0;
 
     public void TakeDamge(int value)
     {
-        if (armor > 0)
+        if (_armor > 0)
         {
-            health -= value / 2;
-            armor -= value / 2;
+            _health -= value / 2;
+            _armor -= value / 2;
         }
         else
         {
-            health -= value;
+            _health -= value;
+        }
+
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
