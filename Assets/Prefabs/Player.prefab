@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 2924610342615485988, guid: f0ef7ede3492c5e40afa97e37dc7a2bc, type: 3}
+  _gunTimer: 2
+  _currentTime: 0
 --- !u!1 &7433316530451734523
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mouseSensitivity: 10
   _moveSpeed: 3
-  _cam: {fileID: 0}
+  _inventory: {fileID: 11400000, guid: c780cb0092b85c14f8df7c7faedfbb4a, type: 2}
 --- !u!114 &2645128831280268159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,5 +260,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ffbcb66e5d2f94fa2a6d046182ac11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  armor: 0
+  _health: 100
+  _armor: 0

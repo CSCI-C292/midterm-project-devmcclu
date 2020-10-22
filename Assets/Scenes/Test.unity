@@ -846,6 +846,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1616809453, guid: d6c4b3e6ee6bd324c94467575a01994b, type: 3}
+      propertyPath: _moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131532750921142925, guid: d6c4b3e6ee6bd324c94467575a01994b,
+        type: 3}
+      propertyPath: _gunTimer
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7433316530451734503, guid: d6c4b3e6ee6bd324c94467575a01994b,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float _mouseSensitivity = 10f;
     [SerializeField] float _moveSpeed = 3f;
-    [SerializeField] Camera _cam;
+    [SerializeField] Inventory _inventory;
     CharacterController _characterController;
     GunController _gunController;
 
@@ -28,9 +28,33 @@ public class PlayerController : MonoBehaviour
         Aim();
         Movement();
 
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButton("Fire1") && _inventory.Ammo[(int) _inventory.CurrentGun] > 0)
         {
-            _gunController.Shoot();
+            if (_gunController.Shoot())
+            {
+                _inventory.Ammo[(int) _inventory.CurrentGun] -= 1;
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ChangeWeapon(0);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ChangeWeapon(1);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ChangeWeapon(2);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            ChangeWeapon(3);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            ChangeWeapon(4);
         }
     }
 
@@ -49,5 +73,31 @@ public class PlayerController : MonoBehaviour
 
         _characterController.Move(movementVector * _moveSpeed * Time.deltaTime);
 
+    }
+
+    void ChangeWeapon(int weapon)
+    {
+        if(_inventory.HaveGun[weapon])
+        {
+            switch (weapon)
+            {
+                case 0:
+                    _inventory.CurrentGun = Inventory.Guns.Knife;
+                    break;
+                case 1:
+                    _inventory.CurrentGun = Inventory.Guns.Pistol;
+                    break;
+                case 2:
+                    _inventory.CurrentGun = Inventory.Guns.Shotgun;
+                    break;
+                case 3:
+                    _inventory.CurrentGun = Inventory.Guns.Rifle;
+                    break;
+                case 4:
+                    _inventory.CurrentGun = Inventory.Guns.RocketLauncher;
+                    break;
+            }
+            _gunController.ChangeBullet(_inventory.AmmoPrefab[weapon]);
+        }
     }
 }
