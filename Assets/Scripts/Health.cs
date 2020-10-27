@@ -31,11 +31,23 @@ public class Health : MonoBehaviour
     {
         if(_health + value <= _maxHealth)
         {
-            _health+= value;
+            _health += value;
         }
         else
         {
             _health = _maxHealth;
+        }
+    }
+
+    public void GainArmor(int value)
+    {
+        if(_armor + value <= _maxArmor)
+        {
+            _armor += value;
+        }
+        else
+        {
+            _health = _maxArmor;
         }
     }
 }
