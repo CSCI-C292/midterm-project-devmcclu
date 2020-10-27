@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentGun: 1
   HaveGun: 0101000000
-  Ammo: 0100000032000000000000000000000000000000
+  Ammo: 010000002d000000000000000000000000000000
   AmmoPrefab:
   - {fileID: 0}
   - {fileID: 2924610342615485988, guid: f0ef7ede3492c5e40afa97e37dc7a2bc, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6655137118458655122, guid: 6f968559c4285714685ab19e45defa42, type: 3}
+  - {fileID: 4385475254072760453, guid: 11a51a1bb5e47ac4a8a5e37b55c7b3af, type: 3}
+  - {fileID: 6506127654749325013, guid: 97a5f18d708c10040a927688d416cf24, type: 3}
   FireTimer:
   - 0.5
   - 0.5
