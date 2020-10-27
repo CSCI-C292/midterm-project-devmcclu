@@ -5,7 +5,9 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] int _health = 100;
+    [SerializeField] int _maxHealth = 100;
     [SerializeField] int _armor = 0;
+    [SerializeField] int _maxArmor = 100;
 
     public void TakeDamge(int value)
     {
@@ -22,6 +24,18 @@ public class Health : MonoBehaviour
         if (_health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void GainHealth(int value)
+    {
+        if(_health + value <= _maxHealth)
+        {
+            _health+= value;
+        }
+        else
+        {
+            _health = _maxHealth;
         }
     }
 }

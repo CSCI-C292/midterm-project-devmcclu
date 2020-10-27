@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346070160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.61, z: 0}
+  m_LocalPosition: {x: 0, y: 0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7433316530451734503}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 2924610342615485988, guid: f0ef7ede3492c5e40afa97e37dc7a2bc, type: 3}
-  _gunTimer: 2
+  _gunTimer: 0.5
   _currentTime: 0
 --- !u!1 &7433316530451734523
 GameObject:
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mouseSensitivity: 10
-  _moveSpeed: 3
+  _moveSpeed: 5
   _inventory: {fileID: 11400000, guid: c780cb0092b85c14f8df7c7faedfbb4a, type: 2}
 --- !u!114 &2645128831280268159
 MonoBehaviour:
