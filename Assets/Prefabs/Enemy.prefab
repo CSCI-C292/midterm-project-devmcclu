@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 295306536817286468}
   - component: {fileID: 295306536817286585}
   - component: {fileID: 295306536817286586}
+  - component: {fileID: 8616006464666915331}
+  - component: {fileID: 6405325975726952826}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -115,7 +117,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
@@ -133,8 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2fa0d055d4684ea9c53e535c46cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 295306536817286468}
-  player: {fileID: 0}
+  _agent: {fileID: 295306536817286468}
+  _player: {fileID: 0}
+  _canMove: 0
+  _attackCollider: {fileID: 8616006464666915331}
 --- !u!114 &295306536817286586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,3 +155,29 @@ MonoBehaviour:
   _maxHealth: 100
   _armor: 0
   _maxArmor: 100
+--- !u!65 &8616006464666915331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295306536817286467}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 1.07}
+--- !u!114 &6405325975726952826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295306536817286467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2683e06226a3c044b72f8838e44f62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 20

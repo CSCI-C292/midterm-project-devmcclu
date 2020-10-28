@@ -6,3 +6,9 @@ public enum Guns
     Rifle,
     RocketLauncher
 }
+
+public enum CanvasType
+{
+    LevelEnd,
+    Death
+}

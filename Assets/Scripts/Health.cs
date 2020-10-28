@@ -23,7 +23,14 @@ public class Health : MonoBehaviour
 
         if (_health <= 0)
         {
-            Destroy(gameObject);
+            if(gameObject.CompareTag("Player"))
+            {
+                GameEvents.InvokePlayerDied();
+            }
+            else if (gameObject.CompareTag("Enemy"))
+            {
+                Destroy(gameObject);            
+            }
         }
     }
 

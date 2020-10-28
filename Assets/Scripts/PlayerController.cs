@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float _mouseSensitivity = 10f;
     [SerializeField] float _moveSpeed = 3f;
+    [SerializeField] bool _canMove = true;
+
     [SerializeField] Inventory _inventory;
     CharacterController _characterController;
     GunController _gunController;
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
+        GameEvents.LevelFinished += OnLevelEnd;
+        GameEvents.PlayerDied += Death;
     }
 
     void Awake()
@@ -26,36 +29,39 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Aim();
-        Movement();
-
-        if(Input.GetButton("Fire1") && _inventory.Ammo[(int) _inventory.CurrentGun] > 0)
+        if(_canMove)
         {
-            if (_gunController.Shoot())
+            Aim();
+            Movement();
+
+            if(Input.GetButton("Fire1") && _inventory.Ammo[(int) _inventory.CurrentGun] > 0)
             {
-                _inventory.Ammo[(int) _inventory.CurrentGun] -= 1;
+                if (_gunController.Shoot())
+                {
+                    _inventory.Ammo[(int) _inventory.CurrentGun] -= 1;
+                }
             }
-        }
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ChangeWeapon(Guns.Knife);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ChangeWeapon(Guns.Pistol);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ChangeWeapon(Guns.Shotgun);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            ChangeWeapon(Guns.Rifle);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            ChangeWeapon(Guns.RocketLauncher);
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                ChangeWeapon(Guns.Knife);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                ChangeWeapon(Guns.Pistol);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                ChangeWeapon(Guns.Shotgun);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                ChangeWeapon(Guns.Rifle);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                ChangeWeapon(Guns.RocketLauncher);
+            }
         }
     }
 
@@ -100,6 +106,16 @@ public class PlayerController : MonoBehaviour
             }
             _gunController.ChangeBullet(_inventory.AmmoPrefab[(int) weapon]);
         }
+    }
+
+    void OnLevelEnd(object sender, EventArgs args)
+    {
+        _canMove = false;
+    }
+    
+    void Death(object sender, EventArgs args)
+    {
+        _canMove = false;
     }
 
     public void GainAmmo(Guns weapon, int amount)

@@ -5,11 +5,19 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] string _levelToLoad;
-    Canvas _canvas;
+    [SerializeField] CanvasType _canvasType;
+    [SerializeField] Canvas _canvas;
     void Awake()
     {
         _canvas = GetComponent<Canvas>();
-        GameEvents.LevelFinished += OnLevelEnd;
+        if(_canvasType == CanvasType.LevelEnd)
+        {
+            GameEvents.LevelFinished += OnLevelEnd;
+        }
+        else if (_canvasType == CanvasType.Death)
+        {
+            GameEvents.PlayerDied +=  OnLevelEnd;
+        }
     }
 
     void OnLevelEnd(object sender, EventArgs args)
