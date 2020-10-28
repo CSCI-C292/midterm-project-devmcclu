@@ -100,4 +100,9 @@ public class PlayerController : MonoBehaviour
             _gunController.ChangeBullet(_inventory.AmmoPrefab[(int) weapon]);
         }
     }
+
+    public void GainAmmo(Guns weapon, int amount)
+    {
+        _inventory.Ammo[(int)weapon] += amount;
+    }
 }
