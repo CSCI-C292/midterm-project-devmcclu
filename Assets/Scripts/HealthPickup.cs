@@ -5,11 +5,6 @@ using UnityEngine;
 public class HealthPickup : MonoBehaviour
 {
     [SerializeField] int _healthAmount = 20;
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter(Collider other)
     {

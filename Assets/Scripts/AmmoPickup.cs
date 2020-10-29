@@ -6,17 +6,13 @@ public class AmmoPickup : MonoBehaviour
 {
     [SerializeField] Guns _gunAmmo;
     [SerializeField] int _ammoAmount = 20;
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
+            other.GetComponent<PlayerController>().GainAmmo(_gunAmmo, _ammoAmount);
         }
     }
 }

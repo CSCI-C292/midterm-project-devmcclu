@@ -5,11 +5,6 @@ using UnityEngine;
 public class ArmorPickup : MonoBehaviour
 {
     [SerializeField] int _armorAmount = 20;
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter(Collider other)
     {
