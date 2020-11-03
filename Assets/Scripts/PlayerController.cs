@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool _canMove = true;
 
     [SerializeField] Inventory _inventory;
+    [SerializeField] TextMeshProUGUI _ammoText;
     CharacterController _characterController;
     GunController _gunController;
 
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _gunController = GetComponentInChildren<GunController>();
+        UpdateAmmoText();
     }
 
     // Update is called once per frame
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
                 if (_gunController.Shoot())
                 {
                     _inventory.Ammo[(int) _inventory.CurrentGun] -= 1;
+                    UpdateAmmoText();
                 }
             }
 
@@ -105,6 +109,8 @@ public class PlayerController : MonoBehaviour
                     break;
             }
             _gunController.ChangeBullet(_inventory.AmmoPrefab[(int) weapon]);
+            _gunController.ChangeTimer(_inventory.FireTimer[(int) weapon]);
+            UpdateAmmoText();
         }
     }
 
@@ -116,6 +122,11 @@ public class PlayerController : MonoBehaviour
     void Death(object sender, EventArgs args)
     {
         _canMove = false;
+    }
+
+    void UpdateAmmoText()
+    {
+        _ammoText.text = String.Concat("Ammo: ", _inventory.Ammo[(int) _inventory.CurrentGun].ToString());
     }
 
     public void GainAmmo(Guns weapon, int amount)

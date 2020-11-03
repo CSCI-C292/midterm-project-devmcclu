@@ -9,7 +9,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] Canvas _canvas;
     void Awake()
     {
-        _canvas = GetComponent<Canvas>();
+        //_canvas = GetComponent<Canvas>();
         if(_canvasType == CanvasType.LevelEnd)
         {
             GameEvents.LevelFinished += OnLevelEnd;

@@ -32,4 +32,9 @@ public class GunController : MonoBehaviour
     {
         _bullet = ammo;
     }
+
+    public void ChangeTimer(float time)
+    {
+        _gunTimer = time;
+    }
 }
