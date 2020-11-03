@@ -29,6 +29,14 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadLevel()
     {
+        if(_canvasType == CanvasType.LevelEnd)
+        {
+            GameEvents.LevelFinished -= OnLevelEnd;
+        }
+        else if (_canvasType == CanvasType.Death)
+        {
+            GameEvents.PlayerDied -=  OnLevelEnd;
+        }
         SceneManager.LoadScene(_levelToLoad);
     }
 }
