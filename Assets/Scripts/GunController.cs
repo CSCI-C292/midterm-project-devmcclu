@@ -15,6 +15,7 @@ public class GunController : MonoBehaviour
 
     public bool Shoot()
     {
+        //Create a bullet if the timer is correct
         if (_currentTime >= _gunTimer)
         {
             GameObject newBullet = Instantiate(_bullet, transform.position, Quaternion.identity);

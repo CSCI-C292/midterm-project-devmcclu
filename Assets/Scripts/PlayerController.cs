@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Inventory _inventory;
     [SerializeField] TextMeshProUGUI _ammoText;
+    //Gun object meshes
     [SerializeField] GameObject[] _gunObjects = new GameObject[5];
+    //Gun object shown
     GameObject _currentGun;
     CharacterController _characterController;
     GunController _gunController;
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Make sure time is running correctly
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         GameEvents.LevelFinished += OnLevelEnd;
@@ -28,7 +31,9 @@ public class PlayerController : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _gunController = GetComponentInChildren<GunController>();
-        _currentGun = _gunObjects[1];
+        //Current gun that is shown on player
+        _currentGun = _gunObjects[(int) _inventory.CurrentGun];
+        //Make sure correct ammo is shown
         UpdateAmmoText();
     }
 
@@ -40,8 +45,10 @@ public class PlayerController : MonoBehaviour
             Aim();
             Movement();
 
+            //Only shoot if player can shoot
             if(Input.GetButton("Fire1") && _inventory.Ammo[(int) _inventory.CurrentGun] > 0)
             {
+                //If the player did shoot, get rid of ammo
                 if (_gunController.Shoot())
                 {
                     _inventory.Ammo[(int) _inventory.CurrentGun] -= 1;
@@ -93,6 +100,7 @@ public class PlayerController : MonoBehaviour
     {
         if(_inventory.HaveGun[(int) weapon])
         {
+            //Switch to the correct gun in the inventory
             switch (weapon)
             {
                 case Guns.Knife:
@@ -112,9 +120,11 @@ public class PlayerController : MonoBehaviour
                     break;
             }
             
+            //Change the bullet and fire rate
             _gunController.ChangeBullet(_inventory.AmmoPrefab[(int) weapon]);
             _gunController.ChangeTimer(_inventory.FireTimer[(int) weapon]);
             
+            //Switch to the correct weapon mesh
             _currentGun.SetActive(false);
             _currentGun = _gunObjects[(int) weapon];
             _currentGun.SetActive(true);
