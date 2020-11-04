@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Inventory _inventory;
     [SerializeField] TextMeshProUGUI _ammoText;
+    [SerializeField] GameObject[] _gunObjects = new GameObject[5];
+    GameObject _currentGun;
     CharacterController _characterController;
     GunController _gunController;
 
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _gunController = GetComponentInChildren<GunController>();
+        _currentGun = _gunObjects[1];
         UpdateAmmoText();
     }
 
@@ -108,8 +111,14 @@ public class PlayerController : MonoBehaviour
                     _inventory.CurrentGun = Guns.RocketLauncher;
                     break;
             }
+            
             _gunController.ChangeBullet(_inventory.AmmoPrefab[(int) weapon]);
             _gunController.ChangeTimer(_inventory.FireTimer[(int) weapon]);
+            
+            _currentGun.SetActive(false);
+            _currentGun = _gunObjects[(int) weapon];
+            _currentGun.SetActive(true);
+            
             UpdateAmmoText();
         }
     }
