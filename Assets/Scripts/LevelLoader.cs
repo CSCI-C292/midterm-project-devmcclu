@@ -7,6 +7,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] string _levelToLoad;
     [SerializeField] CanvasType _canvasType;
     [SerializeField] Canvas _canvas;
+    [SerializeField] LevelTimer _levelTimer;
     void Awake()
     {
         //_canvas = GetComponent<Canvas>();
@@ -31,6 +32,7 @@ public class LevelLoader : MonoBehaviour
     {
         if(_canvasType == CanvasType.LevelEnd)
         {
+            _levelTimer.StopTimer();
             GameEvents.LevelFinished -= OnLevelEnd;
         }
         else if (_canvasType == CanvasType.Death)
