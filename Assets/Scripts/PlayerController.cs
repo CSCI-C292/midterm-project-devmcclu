@@ -56,23 +56,23 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            // if(Input.GetKeyDown(KeyCode.Alpha1))
+            // {
+            //     ChangeWeapon(Guns.Knife);
+            // }
             if(Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                ChangeWeapon(Guns.Knife);
-            }
-            if(Input.GetKeyDown(KeyCode.Alpha2))
             {
                 ChangeWeapon(Guns.Pistol);
             }
-            if(Input.GetKeyDown(KeyCode.Alpha3))
+            if(Input.GetKeyDown(KeyCode.Alpha2))
             {
                 ChangeWeapon(Guns.Shotgun);
             }
-            if(Input.GetKeyDown(KeyCode.Alpha4))
+            if(Input.GetKeyDown(KeyCode.Alpha3))
             {
                 ChangeWeapon(Guns.Rifle);
             }
-            if(Input.GetKeyDown(KeyCode.Alpha5))
+            if(Input.GetKeyDown(KeyCode.Alpha4))
             {
                 ChangeWeapon(Guns.RocketLauncher);
             }
