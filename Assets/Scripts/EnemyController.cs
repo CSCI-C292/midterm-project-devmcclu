@@ -12,13 +12,13 @@ public class EnemyController : MonoBehaviour
 
     void Awake()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");    
+        //_player = GameObject.FindGameObjectWithTag("Player");    
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_agent.isStopped)
+        if(_agent.isStopped && _player != null)
         {
             StartCoroutine(Attack());
         }
@@ -27,9 +27,12 @@ public class EnemyController : MonoBehaviour
             StopCoroutine(Attack());
         }
         
-        if((transform.position - _player.transform.position).sqrMagnitude > _agent.stoppingDistance)
+        if (_player != null)
         {
-            _agent.SetDestination(_player.transform.position);
+            if((transform.position - _player.transform.position).sqrMagnitude > _agent.stoppingDistance)
+            {
+                _agent.SetDestination(_player.transform.position);
+            }
         }
     }
 
@@ -38,5 +41,10 @@ public class EnemyController : MonoBehaviour
         _attackCollider.enabled = true;
         yield return new WaitForSeconds(3);
         _attackCollider.enabled = false;
+    }
+
+    public void SetPlayerObject(GameObject playerObject)
+    {
+        _player = playerObject;
     }
 }
