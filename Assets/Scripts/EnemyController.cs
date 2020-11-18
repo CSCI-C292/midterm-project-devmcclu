@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] GameObject _player;
     [SerializeField] bool _canMove;
     [SerializeField] Collider _attackCollider;
+    [SerializeField] Animator _animator;
 
     void Awake()
     {
@@ -18,20 +19,31 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_agent.isStopped && _player != null)
+        if (_agent.isStopped)
         {
-            StartCoroutine(Attack());
+            if (_player != null)
+            {
+                StartCoroutine(Attack());
+            }
+            else
+            {
+                StopCoroutine(Attack());
+            }
         }
-        else
-        {
-            StopCoroutine(Attack());
-        }
-        
+
         if (_player != null)
         {
             if((transform.position - _player.transform.position).sqrMagnitude > _agent.stoppingDistance)
             {
+                _agent.isStopped = false;
+                _animator.SetBool("isRunning", true);
                 _agent.SetDestination(_player.transform.position);
+            }
+            else
+            {
+                Debug.Log("why");
+                _animator.SetBool("isRunning", false);
+                _agent.isStopped = true;
             }
         }
     }
