@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                Debug.Log("why");
+                //Debug.Log("why");
                 _animator.SetBool("isRunning", false);
                 _agent.isStopped = true;
             }

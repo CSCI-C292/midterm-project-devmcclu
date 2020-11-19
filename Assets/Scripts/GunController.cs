@@ -7,6 +7,7 @@ public class GunController : MonoBehaviour
     [SerializeField] GameObject _bullet;
     [SerializeField] float _gunTimer;
     [SerializeField] float _currentTime;
+    [SerializeField] AudioSource _audioSource;
 
     void Update()
     {
@@ -21,6 +22,7 @@ public class GunController : MonoBehaviour
             GameObject newBullet = Instantiate(_bullet, transform.position, Quaternion.identity);
             newBullet.transform.forward = Camera.main.transform.forward;
             _currentTime = 0f;
+            _audioSource.Play();
             return true;
         }
         else
@@ -37,5 +39,10 @@ public class GunController : MonoBehaviour
     public void ChangeTimer(float time)
     {
         _gunTimer = time;
+    }
+
+    public void ChangeAudioClip(AudioClip clip)
+    {
+        _audioSource.clip = clip;
     }
 }

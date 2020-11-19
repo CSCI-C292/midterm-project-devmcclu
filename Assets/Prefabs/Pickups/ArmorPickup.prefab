@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5432582362544665300}
   - component: {fileID: 5432582362544665301}
   - component: {fileID: 5432582362544665302}
+  - component: {fileID: 127731769}
   m_Layer: 0
   m_Name: ArmorPickup
   m_TagString: Untagged
@@ -59,6 +60,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _armorAmount: 20
+--- !u!114 &127731769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432582362544665303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &5432582361849457664
 PrefabInstance:
   m_ObjectHideFlags: 0

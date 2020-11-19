@@ -10,6 +10,7 @@ public class HealthPickup : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("Health");
             Destroy(gameObject);
             other.GetComponent<Health>().GainHealth(_healthAmount);
         }

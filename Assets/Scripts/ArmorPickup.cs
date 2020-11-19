@@ -10,6 +10,7 @@ public class ArmorPickup : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("Armor");
             Destroy(gameObject);
             other.GetComponent<Health>().GainArmor(_armorAmount);
         }

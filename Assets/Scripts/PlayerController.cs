@@ -123,13 +123,16 @@ public class PlayerController : MonoBehaviour
             //Change the bullet and fire rate
             _gunController.ChangeBullet(_inventory.AmmoPrefab[(int) weapon]);
             _gunController.ChangeTimer(_inventory.FireTimer[(int) weapon]);
+            _gunController.ChangeAudioClip(_inventory.AudioClips[(int) weapon]);
             
             //Switch to the correct weapon mesh
             _currentGun.SetActive(false);
             _currentGun = _gunObjects[(int) weapon];
             _currentGun.SetActive(true);
-            
+
             UpdateAmmoText();
+
+            FindObjectOfType<AudioManager>().Play("ChangeWeapon");
         }
     }
 
@@ -146,6 +149,12 @@ public class PlayerController : MonoBehaviour
     void UpdateAmmoText()
     {
         _ammoText.text = String.Concat("Ammo: ", _inventory.Ammo[(int) _inventory.CurrentGun].ToString());
+    }
+
+    void OnDisable() 
+    {
+        GameEvents.LevelFinished -= OnLevelEnd;
+        GameEvents.PlayerDied -= Death;
     }
 
     public void GainAmmo(Guns weapon, int amount)

@@ -8,4 +8,5 @@ public class Inventory : ScriptableObject
     public int[] Ammo = new int[5];
     public GameObject[] AmmoPrefab = new GameObject[5];
     public float[] FireTimer = new float[5];
+    public AudioClip[] AudioClips = new AudioClip[5];
 }
