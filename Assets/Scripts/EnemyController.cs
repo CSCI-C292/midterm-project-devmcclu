@@ -31,19 +31,22 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        if (_player != null)
+        if (!_animator.GetBool("isDead"))
         {
-            if((transform.position - _player.transform.position).sqrMagnitude > _agent.stoppingDistance)
+            if (_player != null)
             {
-                _agent.isStopped = false;
-                _animator.SetBool("isRunning", true);
-                _agent.SetDestination(_player.transform.position);
-            }
-            else
-            {
-                //Debug.Log("why");
-                _animator.SetBool("isRunning", false);
-                _agent.isStopped = true;
+                if((transform.position - _player.transform.position).sqrMagnitude > _agent.stoppingDistance)
+                {
+                    _agent.isStopped = false;
+                    _animator.SetBool("isRunning", true);
+                    _agent.SetDestination(_player.transform.position);
+                }
+                else
+                {
+                    //Debug.Log("why");
+                    _animator.SetBool("isRunning", false);
+                    _agent.isStopped = true;
+                }
             }
         }
     }
@@ -58,5 +61,27 @@ public class EnemyController : MonoBehaviour
     public void SetPlayerObject(GameObject playerObject)
     {
         _player = playerObject;
+    }
+
+    public void PlayDeathAnim()
+    {
+        StartCoroutine(DeathAnim());
+    }
+
+    IEnumerator DeathAnim()
+    {
+        _animator.SetBool("isDead", true);
+
+        while(!_animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        {
+            yield return null;
+        }
+
+        while(_animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        {
+            yield return null;
+        }
+
+        Destroy(gameObject); 
     }
 }

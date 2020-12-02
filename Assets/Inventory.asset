@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5a264b668d0a749bc872fdc66c6888, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  CurrentGun: 4
+  CurrentGun: 1
   HaveGun: 0001010101
   Ammo: 0100000064000000280000002c01000014000000
   AmmoPrefab:

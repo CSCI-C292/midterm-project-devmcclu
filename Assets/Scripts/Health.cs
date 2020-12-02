@@ -50,7 +50,7 @@ public class Health : MonoBehaviour
             }
             else if (gameObject.CompareTag("Enemy"))
             {
-                Destroy(gameObject);            
+                gameObject.GetComponent<EnemyController>().PlayDeathAnim();
             }
         }
     }
