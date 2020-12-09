@@ -24,10 +24,12 @@ public class EnemyController : MonoBehaviour
             if (_player != null)
             {
                 StartCoroutine(Attack());
+                _animator.SetBool("isAttacking", true);
             }
             else
             {
                 StopCoroutine(Attack());
+                _animator.SetBool("isAttacking", false);
             }
         }
 
