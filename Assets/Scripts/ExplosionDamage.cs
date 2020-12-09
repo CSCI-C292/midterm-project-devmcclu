@@ -6,20 +6,16 @@ public class ExplosionDamage : MonoBehaviour
 {
     
     [SerializeField] int _damage = 20;
-    [SerializeField] float _timer = 2f;
+    [SerializeField] ParticleSystem _particle;
 
-    void Update()
+    private void Awake()
     {
-        if(_timer <= 0)
-        {
-            Destroy(gameObject);
-        }    
+        Destroy(gameObject, _particle.main.duration);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
-        if(other.gameObject.tag.Equals("Player") || other.gameObject.tag.Equals("Enemy"))
+        if(other.gameObject.tag.Equals("Enemy"))
         {
             other.gameObject.GetComponent<Health>().TakeDamge(_damage);
         }
