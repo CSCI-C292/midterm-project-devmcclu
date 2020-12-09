@@ -15336,7 +15336,7 @@ PrefabInstance:
     - target: {fileID: 6093289138195771140, guid: 3b059afa8baed5f4ba7e9ca4dcec3b62,
         type: 3}
       propertyPath: _levelToLoad
-      value: MainMenu
+      value: Level3
       objectReference: {fileID: 0}
     - target: {fileID: 6093289139271809218, guid: 3b059afa8baed5f4ba7e9ca4dcec3b62,
         type: 3}
