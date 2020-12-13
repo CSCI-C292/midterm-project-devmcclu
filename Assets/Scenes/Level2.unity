@@ -15333,6 +15333,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 249330698, guid: 3b059afa8baed5f4ba7e9ca4dcec3b62, type: 3}
+      propertyPath: m_text
+      value: 'Par: 01:30.00'
+      objectReference: {fileID: 0}
     - target: {fileID: 6093289138195771140, guid: 3b059afa8baed5f4ba7e9ca4dcec3b62,
         type: 3}
       propertyPath: _levelToLoad
@@ -15456,7 +15460,7 @@ PrefabInstance:
     - target: {fileID: 6093289140002621430, guid: 3b059afa8baed5f4ba7e9ca4dcec3b62,
         type: 3}
       propertyPath: m_text
-      value: You Won!
+      value: Level Finished
       objectReference: {fileID: 0}
     - target: {fileID: 6093289140148901950, guid: 3b059afa8baed5f4ba7e9ca4dcec3b62,
         type: 3}
