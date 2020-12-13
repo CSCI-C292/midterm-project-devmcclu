@@ -8,6 +8,7 @@ public class GunController : MonoBehaviour
     [SerializeField] float _gunTimer;
     [SerializeField] float _currentTime;
     [SerializeField] AudioSource _audioSource;
+    [SerializeField] GameObject[] _shotgunSpawns;
 
     void Update()
     {
@@ -21,6 +22,15 @@ public class GunController : MonoBehaviour
         {
             GameObject newBullet = Instantiate(_bullet, transform.position, Quaternion.identity);
             newBullet.transform.forward = Camera.main.transform.forward;
+            if (_bullet.name == "ammo_shotgun")
+            {
+                foreach (GameObject spawn in _shotgunSpawns)
+                {
+                    newBullet = Instantiate(_bullet, spawn.transform.position, Quaternion.identity);
+                    newBullet.transform.forward = spawn.transform.forward;
+                }
+                //Debug.Break();
+            }
             _currentTime = 0f;
             _audioSource.Play();
             return true;
