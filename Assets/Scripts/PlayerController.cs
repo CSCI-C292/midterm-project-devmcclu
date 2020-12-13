@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI _ammoText;
     //Gun object meshes
     [SerializeField] GameObject[] _gunObjects = new GameObject[5];
+    [SerializeField] Canvas _pausedCanvas;
     //Gun object shown
     GameObject _currentGun;
     CharacterController _characterController;
@@ -76,6 +77,11 @@ public class PlayerController : MonoBehaviour
             {
                 ChangeWeapon(Guns.RocketLauncher);
             }
+        }
+
+        if(Input.GetButtonDown("Cancel"))
+        {
+            PauseGame();
         }
     }
 
@@ -160,5 +166,22 @@ public class PlayerController : MonoBehaviour
     public void GainAmmo(Guns weapon, int amount)
     {
         _inventory.Ammo[(int)weapon] += amount;
+    }
+    
+    public void PauseGame()
+    {
+        if (Time.timeScale != 0)
+        {
+            _pausedCanvas.enabled = true;
+            Time.timeScale = 0;
+            _canMove = false;
+        }
+        else
+        {
+            _pausedCanvas.enabled = false;
+            Time.timeScale = 1;
+            _canMove = true;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }
