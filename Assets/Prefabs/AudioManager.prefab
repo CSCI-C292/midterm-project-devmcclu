@@ -58,30 +58,48 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PistolAmmo
     clip: {fileID: 8300000, guid: ffe1e920bc09ad0449c5b9fcb4d65ed1, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     isLooping: 0
     source: {fileID: 0}
   - name: RifleAmmo
     clip: {fileID: 8300000, guid: 37a47b56365305f4987d6625f4de2433, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     isLooping: 0
     source: {fileID: 0}
   - name: ShotgunAmmo
     clip: {fileID: 8300000, guid: 7dae43f069a6524479544104b4f94928, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     isLooping: 0
     source: {fileID: 0}
   - name: RocketAmmo
     clip: {fileID: 8300000, guid: 7dae43f069a6524479544104b4f94928, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     isLooping: 0
     source: {fileID: 0}
   - name: ChangeWeapon
     clip: {fileID: 8300000, guid: 19621018fb3b71446936f43ee3c98782, type: 3}
+    volume: 1
+    pitch: 1
+    isLooping: 0
+    source: {fileID: 0}
+  - name: PlayerHit
+    clip: {fileID: 8300000, guid: cec1d5e13ee945e47a5813f1828aa6b9, type: 3}
+    volume: 1
+    pitch: 1
+    isLooping: 0
+    source: {fileID: 0}
+  - name: EnemyHit
+    clip: {fileID: 8300000, guid: 5c9889144eeddaa46bddb326a3dc5d18, type: 3}
+    volume: 1
+    pitch: 1
+    isLooping: 0
+    source: {fileID: 0}
+  - name: EnemyDead
+    clip: {fileID: 8300000, guid: 5c9889144eeddaa46bddb326a3dc5d18, type: 3}
     volume: 1
     pitch: 1
     isLooping: 0

@@ -12,11 +12,17 @@ public class Health : MonoBehaviour
     [SerializeField] bool _isPlayer = false;
     [SerializeField] TextMeshProUGUI _healthText;
     [SerializeField] TextMeshProUGUI _armorText;
+    AudioManager _audioManager;
 
     void Start()
     {
         if(_isPlayer)
             UpdateText();
+    }
+
+    void Awake()
+    {
+        _audioManager = FindObjectOfType<AudioManager>();    
     }    
 
     void UpdateText()
@@ -50,7 +56,19 @@ public class Health : MonoBehaviour
             }
             else if (gameObject.CompareTag("Enemy"))
             {
+                _audioManager.Play("EnemyDead");
                 gameObject.GetComponent<EnemyController>().PlayDeathAnim();
+            }
+        }
+        else
+        {
+            if(gameObject.CompareTag("Player"))
+            {
+                _audioManager.Play("PlayerHit");
+            }
+            else if (gameObject.CompareTag("Enemy"))
+            {
+                _audioManager.Play("EnemyHit");
             }
         }
     }
