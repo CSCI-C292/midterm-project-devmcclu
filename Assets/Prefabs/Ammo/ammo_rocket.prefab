@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
-  _damage: 20
+  _damage: 60
   _timer: 2
 --- !u!65 &5779975890749828714
 BoxCollider:
